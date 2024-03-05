@@ -1,10 +1,11 @@
 import React from "react";
 import "../css/login.css";
 import Logo from "../assets/logo1.jpeg";
+import Header from "../components/header";
 
 const Login = () => {
     return(
-    <div>
+    <div>   
         <div className="login__logo">
             <img src={Logo} />
         </div>
