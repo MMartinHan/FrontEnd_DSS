@@ -1,4 +1,5 @@
 import React from "react";
+import Header from '../components/header.jsx'; // Ajusta la ruta según la ubicación de tu componente Header
 import "../css/main_bibliotecario.css";
 import prestamos from "../assets/prestamo.jpg";
 import agregar from "../assets/agregar_libro.jpg";
@@ -7,6 +8,7 @@ import agregar_autor from "../assets/agregar_autor.png";
 const MainBibliotecario = () => {
     return(
         <div>
+            <Header />
             <div className="container">
                 <table className="table_thead_th" sx={{width: "100%"}}> 
                     <tr className="table_tbody_tr">

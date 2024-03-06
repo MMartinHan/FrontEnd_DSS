@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../css/header.css'; // Ajusta la ruta según la ubicación de tu archivo CSS
+import logo_espe from '../assets/logo_espe.png'; 
 
 const Header = () => {
     const [userName, setUserName] = useState('');
@@ -22,9 +23,9 @@ const Header = () => {
     return (
         <header className="custom-header">
             <div className="logo">
-                <img src="assets/logo_espe.png" alt="Logo" />
+                <img src={logo_espe} alt="Logo" />
             </div>
-            {userData && (
+            {userName && (
                 <div className="user-info">
                     <img src={userData.avatarUrl || "assets/default_user.png"} alt="Usuario" className="user-avatar" />
                     <span>{userData.nombre}</span>
