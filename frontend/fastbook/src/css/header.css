@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.logo img {
+    width: 50px; /* Ajusta el tamaño según tus necesidades */
+    height: auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 30px; /* Ajusta el tamaño según tus necesidades */
+    height: auto;
+    margin-right: 5px;
+}
+
+.logout-button {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #ff6347; /* Color de fondo rojo, ajusta según tus necesidades */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
