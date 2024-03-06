@@ -1,0 +1,51 @@
+.prestamo-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.prestamo-list th, .prestamo-list td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+.prestamo-list th {
+    background-color: #f7f7f7;
+    color: #333333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.prestamo-list tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.prestamo-list tbody tr:hover {
+    background-color: #dddddd;
+}
+
+.prestamo-list tbody td:nth-child(1),
+.prestamo-list tbody th:nth-child(1) {
+    width: 5%;
+}
+
+.prestamo-list tbody td:nth-child(2),
+.prestamo-list tbody th:nth-child(2) {
+    width: 30%;
+}
+
+.prestamo-list tbody td:nth-child(3),
+.prestamo-list tbody th:nth-child(3) {
+    width: 30%;
+}
+
+.prestamo-list tbody td:nth-child(4),
+.prestamo-list tbody th:nth-child(4) {
+    width: 20%;
+}
+
+.prestamo-list tbody td:nth-child(5),
+.prestamo-list tbody th:nth-child(5) {
+    width: 15%;
+}
