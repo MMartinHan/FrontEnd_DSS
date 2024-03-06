@@ -1,0 +1,40 @@
+.table {
+    width: 100%; /* Cambiamos el ancho fijo por 100% */
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
+    color: #444;
+    border: 1px solid #f2f5f7;
+}
+
+.table_thead_th {
+    text-align: left;
+    padding: 10px;
+    background: #f2f5f7;
+    color: #000;
+    border: 1px solid #f2f5f7;
+}
+
+.table_tbody_tr {
+    border-bottom: 1px solid #f2f5f7;
+}
+
+.image_prestamos {
+    width: 100px;
+    height: 100px;
+}
+
+.container {
+    max-width: 100%; /* Para asegurarnos de que no se desborde */
+    overflow-x: auto; /* Para permitir desplazamiento horizontal si es necesario */
+}
+
+.body_mianbibliotecario {
+    background-color: #f2f5f7;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
