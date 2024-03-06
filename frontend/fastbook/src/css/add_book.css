@@ -1,0 +1,63 @@
+.add-book-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.add-book-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.add-book-container form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.add-book-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.add-book-container input[type='text'],
+.add-book-container input[type='date'],
+.add-book-container textarea,
+.add-book-container select,
+.add-book-container input[type='number'] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-book-container textarea {
+    height: 100px;
+}
+
+.add-book-container select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 14l6-9H4l6 9z" /></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: 50%;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.add-book-container button[type='submit'] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-book-container button[type='submit']:hover {
+    background-color: #0056b3;
+}
