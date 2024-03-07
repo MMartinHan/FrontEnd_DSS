@@ -50,7 +50,7 @@ const SearchComponent = () => {
               <td>{book.libro_stock}</td>
               <td>
                 <button onClick={() => reservarLibro(book.id)}>
-                  Agregar al Carrito
+                  Reservar
                 </button>
               </td>
             </tr>

@@ -1,3 +1,4 @@
+
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../css/Navbar.css";
@@ -15,9 +16,9 @@ function Navbar() {
 		<header>
 			<h3>FastBook</h3>
 			<nav ref={navRef}>
-				<a href="/#">Catalogo</a>
-				<a href="/#">Mis Prestamos</a>
-				<a href="/#">Carrito</a>
+				<a href="/catalogo">Catalogo</a>
+				<a href="/mis_prestamos">Mis Prestamos</a>
+				<a href="/">Cerrar Cesion</a>
 				<button
 					className="nav-btn nav-close-btn"
 					onClick={showNavbar}>

@@ -1,32 +1,86 @@
+
 .header {
+    background-color: #002855; /* Azul marino */
+    padding: 20px; /* Espaciado adecuado */
+    color: #fff; /* Texto en blanco para una fuente legible */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #f0f0f0;
-}
-
-.logo img {
-    width: 50px; /* Ajusta el tamaño según tus necesidades */
-    height: auto;
-}
-
-.user-info {
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
     display: flex;
     align-items: center;
-}
 
-.user-avatar {
-    width: 30px; /* Ajusta el tamaño según tus necesidades */
-    height: auto;
-    margin-right: 5px;
-}
-
-.logout-button {
-    cursor: pointer;
-    padding: 5px 10px;
-    background-color: #ff6347; /* Color de fondo rojo, ajusta según tus necesidades */
+  }
+  
+  .nav {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .nav-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .nav-item {
+    display: inline-block;
+    margin-left: 55px;
+  }
+  
+  .nav-item:first-child {
+    margin-left: 0;
+  }
+  
+  .nav-item a {
+    text-decoration: none;
     color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .nav-item a:hover {
+    color: #00fa8e; /* Color de enlace al pasar el mouse */
+  }
+  
+  /* Estilos para hacerlo responsive en pantallas pequeñas */
+  @media screen and (max-width: 768px) {
+    .nav-list {
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .nav-item {
+      display: block;
+      margin: 10px 0;
+    }
+  }
+
+  .logo img {
+    width: 200px;
+    height: auto;
+  }
+
+  /* Estilo para el botón "INGRESAR" */
+.login-button {
+    background-color: #05673c; /* Color de fondo diferente */
+    color: #002855; /* Color de texto */
+    font-weight: bold;
+    padding: 10px 20px; /* Espaciado interno del botón */
     border: none;
-    border-radius: 5px;
-}
+    border-radius: 20px; /* Borde redondeado */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición suave del color de fondo */
+    margin-right: 20px;
+  }
+  
+  .login-button:hover {
+    background-color: #e6b800; /* Color de fondo al pasar el mouse */
+    
+  }
+
+
+  

@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../css/Estu_prestamos.css'; // Importa tu archivo de estilos
+import Navbar from '../components/Navbar';
+import Header from '../components/header';
 
 const Estu_prestamos = () => {
   const [detalles, setDetalles] = useState([]);
@@ -13,7 +15,7 @@ const Estu_prestamos = () => {
         const response = await axios.get('http://localhost:8000/detalles_/');
 
         // Filtrar detalles
-        const detallesFiltrados = response.data.filter((detalle) => detalle.estudiante.id === 2);
+        const detallesFiltrados = response.data.filter((detalle) => detalle.estudiante.id === 1);
 
         setDetalles(detallesFiltrados);
       } catch (error) {
@@ -26,7 +28,10 @@ const Estu_prestamos = () => {
   }, []);
 
   return (
+
     <div className="prestamos-container">
+      <Navbar />
+      <br />
       <h1>Detalles de Prestamos</h1>
       <table className="prestamos-table">
         <thead>
@@ -34,6 +39,7 @@ const Estu_prestamos = () => {
             <th>ID Prestamo</th>
             <th>Autor</th>
             <th>Libro</th>
+            <th>Descripcion</th>
             <th>Prestamo ID</th>
             <th>Fecha Entrega</th>
             <th>Fecha de Devolucion</th>
@@ -45,6 +51,7 @@ const Estu_prestamos = () => {
               <td>{detalle.id}</td>
               <td>{detalle.autor.autor_nombre}</td>
               <td>{detalle.libro.libro_nombre}</td>
+              <td>{detalle.libro.libro_descripcion}</td>
               <td>{detalle.prestamo.id}</td>
               <td>{detalle.prestamo.prestamo_fechaEnt}</td>
               <td>{detalle.prestamo.prestamo_fechaDev}</td>
