@@ -30,7 +30,7 @@ const Estu_prestamos = () => {
   return (
 
     <div className="prestamos-container">
-      <Navbar />
+      <Navbar />  
       <br />
       <h1>Detalles de Prestamos</h1>
       <table className="prestamos-table">
