@@ -1,5 +1,5 @@
-/* Estu_prestamos.css */
-.prestamos-container {
+/* SearchComponent.css */
+.search-container {
     margin: 20px;
     padding: 20px;
     background-color: #f5f5f5;
@@ -7,28 +7,44 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .prestamos-table {
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .books-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
   }
   
-  .prestamos-table th, .prestamos-table td {
+  .books-table th,
+  .books-table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
   }
   
-  .prestamos-table th {
+  .books-table th {
     background-color: #4CAF50;
     color: white;
   }
   
-  .prestamos-table tr:nth-child(even) {
+  .books-table tr:nth-child(even) {
     background-color: #f2f2f2;
   }
   
-  .prestamos-table tr:hover {
+  .books-table tr:hover {
     background-color: #ddd;
+  }
+  
+  button {
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
   

@@ -11,6 +11,6 @@ import MainBibliotecario from './pages/main_bibliotecario.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <MainBibliotecario />
+    <Catalogo />
   </React.StrictMode>,
 )
