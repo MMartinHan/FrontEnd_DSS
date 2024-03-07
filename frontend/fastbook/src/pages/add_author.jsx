@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/add_author.css";
+import NavbarUser from "../components/NavBarUser";
 
 const AddAuthor = () => {
     const [authorName, setAuthorName] = useState('');
@@ -68,6 +69,8 @@ const AddAuthor = () => {
 
     return (
         <div className="add-book-container">
+            <NavbarUser />
+            <br />
             <h1>Agregar Autor</h1>
             <form onSubmit={handleSubmit}>
                 <div>

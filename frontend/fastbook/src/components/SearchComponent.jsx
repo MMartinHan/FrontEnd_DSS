@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { createPrestamo } from '../api/prestamos.api';
 import '../css/SearchComponent.css'; // Importa tu archivo de estilos
+import {createPrestamo} from "../api/prestamos.api"
+import {createDetalle} from "../api/detallePrestamos.api"
+
 
 const SearchComponent = () => {
   const [books, setBooks] = useState([]);
@@ -8,12 +10,38 @@ const SearchComponent = () => {
 
   // Función para traer los datos de la API
   const URL = 'http://localhost:8000/libros_/';
+  const URL_base = 'http://localhost:8000/libros/';
 
   const showData = async () => {
     const response = await fetch(URL);
     const data = await response.json();
     setBooks(data);
   };
+
+  const estudianteId = 1;
+  const fechaEntrega = '2024-03-07'; 
+  const fechaDevolucion = '2024-03-14'; 
+
+  // Construir el objeto Prestamo
+  const prestamoData = {
+    estudiante: estudianteId,
+    prestamo_fechaEnt: fechaEntrega,
+    prestamo_fechaDev: fechaDevolucion,
+  };
+
+  // Función para reservar un libro
+  //createPrestamo(prestamoData);
+
+  /*const showData2 = async () => {
+    const response = await fetch(URL_base);
+    const data_ = await response.json();
+    setBooks(data_);
+  };
+
+  const handleStockChange = (e) => {
+    setStock(e.target.value);
+};*/
+
 
   // Función de búsqueda
   const searcher = (e) => {
@@ -49,7 +77,7 @@ const SearchComponent = () => {
               <td>{book.autor_id.autor_nombre}</td>
               <td>{book.libro_stock}</td>
               <td>
-                <button onClick={() => reservarLibro(book.id)}>
+                <button onClick={() => createPrestamo(prestamoData)}>
                   Reservar
                 </button>
               </td>

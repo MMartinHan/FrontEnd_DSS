@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/add_book.css";
+import NavbarUser from "../components/NavBarUser";
 
 const AddBook = () => {
     // Suponiendo que tienes un estado de autores disponibles
@@ -65,6 +66,7 @@ const AddBook = () => {
 
     return (
         <div className="add-book-container">
+            <NavbarUser />
             <h1>Agregar Libro</h1>
             <form onSubmit={handleSubmit}>
                 <div>

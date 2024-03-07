@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../css/prestamo.css";
+<<<<<<< HEAD
+import NavbarUser from "../components/NavBarUser";
+=======
 import axios from "axios";
+>>>>>>> 4a2444c4fd9461a565a81b53abed0f91d25d4c5b
 
 const Prestamos = () => {
     const [detalles, setDetalles] = useState([]);
@@ -25,6 +29,34 @@ const Prestamos = () => {
     }, []);
   
     return (
+<<<<<<< HEAD
+        <div>
+            <NavbarUser />
+            <h1>Prestamos</h1>
+            <div className="prestamo-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Libro</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {prestamos.map((prestamo, index) => (
+                            <tr key={index}>
+                                <td>{prestamo.id}</td>
+                                <td>{prestamo.libro}</td>
+                                <td>{prestamo.usuario}</td>
+                                <td>{prestamo.fecha}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+=======
   
       <div className="prestamos-container">
         <br />
@@ -56,6 +88,7 @@ const Prestamos = () => {
           </tbody>
         </table>
       </div>
+>>>>>>> 4a2444c4fd9461a565a81b53abed0f91d25d4c5b
     );
   };
   
