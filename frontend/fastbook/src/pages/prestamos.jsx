@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../css/prestamo.css";
-<<<<<<< HEAD
 import NavbarUser from "../components/NavBarUser";
-=======
 import axios from "axios";
->>>>>>> 4a2444c4fd9461a565a81b53abed0f91d25d4c5b
 
 const Prestamos = () => {
     const [detalles, setDetalles] = useState([]);
+    const [prestamos, setPrestamos] = useState([]); 
   
     useEffect(() => {
       // Función para obtener detalles de la API
@@ -29,7 +27,7 @@ const Prestamos = () => {
     }, []);
   
     return (
-<<<<<<< HEAD
+      <div>
         <div>
             <NavbarUser />
             <h1>Prestamos</h1>
@@ -56,7 +54,6 @@ const Prestamos = () => {
                 </table>
             </div>
         </div>
-=======
   
       <div className="prestamos-container">
         <br />
@@ -88,7 +85,7 @@ const Prestamos = () => {
           </tbody>
         </table>
       </div>
->>>>>>> 4a2444c4fd9461a565a81b53abed0f91d25d4c5b
+      </div>
     );
   };
   
