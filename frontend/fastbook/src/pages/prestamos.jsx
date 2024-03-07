@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/prestamo.css";
+import NavbarUser from "../components/NavBarUser";
 
 const Prestamos = () => {
     const [prestamos, setPrestamos] = useState([]);
@@ -17,6 +18,7 @@ const Prestamos = () => {
 
     return (
         <div>
+            <NavbarUser />
             <h1>Prestamos</h1>
             <div className="prestamo-list">
                 <table>
