@@ -12,6 +12,7 @@ import AddBook from './pages/add_book';
 import AddAuthor from './pages/add_author';
 
 
+
 function App() {
   return (
         <Routes>
@@ -19,9 +20,12 @@ function App() {
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/mis_prestamos" element={<Estu_prestamos />} />
           <Route path="/prestamos" element={<Prestamos />} />
+<<<<<<< HEAD
           <Route path="/main_bibliotecario" element={<MainBibliotecario />} />
           <Route path="/add_author" element={<AddAuthor />} />
           <Route path="/add_book" element={<AddBook />} />
+=======
+>>>>>>> 4a2444c4fd9461a565a81b53abed0f91d25d4c5b
         </Routes>
   );
 }

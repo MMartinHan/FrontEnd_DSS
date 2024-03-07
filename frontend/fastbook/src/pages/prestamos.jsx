@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from "react";
 import "../css/prestamo.css";
+<<<<<<< HEAD
 import NavbarUser from "../components/NavBarUser";
+=======
+import axios from "axios";
+>>>>>>> 4a2444c4fd9461a565a81b53abed0f91d25d4c5b
 
 const Prestamos = () => {
-    const [prestamos, setPrestamos] = useState([]);
-
+    const [detalles, setDetalles] = useState([]);
+  
     useEffect(() => {
-        // Aquí puedes hacer una llamada a tu backend para obtener la lista de préstamos
-        // Por ahora, vamos a simular algunos préstamos
-        const dummyPrestamos = [
-            { id: 1, libro: "Libro 1", usuario: "Usuario 1", fecha: "2024-03-06" },
-            { id: 2, libro: "Libro 2", usuario: "Usuario 2", fecha: "2024-03-07" },
-            { id: 3, libro: "Libro 3", usuario: "Usuario 3", fecha: "2024-03-08" }
-        ];
-        setPrestamos(dummyPrestamos);
+      // Función para obtener detalles de la API
+      const fetchDetalles = async () => {
+        try {
+          const response = await axios.get('http://localhost:8000/detalles_/');
+  
+          // Filtrar detalles
+          const detallesFiltrados = response.data.filter((detalle) => detalle.estudiante.id === 1);
+  
+          setDetalles(detallesFiltrados);
+        } catch (error) {
+          console.error('Error al obtener detalles:', error);
+        }
+      };
+  
+      // Llamada a la función para cargar detalles al montar el componente
+      fetchDetalles();
     }, []);
-
+  
     return (
+<<<<<<< HEAD
         <div>
             <NavbarUser />
             <h1>Prestamos</h1>
@@ -43,7 +56,40 @@ const Prestamos = () => {
                 </table>
             </div>
         </div>
+=======
+  
+      <div className="prestamos-container">
+        <br />
+        <h1>Detalles de Prestamos</h1>
+        <table className="prestamos-table">
+          <thead>
+            <tr>
+              <th>ID Prestamo</th>
+              <th>Autor</th>
+              <th>Libro</th>
+              <th>Descripcion</th>
+              <th>Prestamo ID</th>
+              <th>Fecha Entrega</th>
+              <th>Fecha de Devolucion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {detalles.map((detalle) => (
+              <tr key={detalle.id}>
+                <td>{detalle.id}</td>
+                <td>{detalle.autor.autor_nombre}</td>
+                <td>{detalle.libro.libro_nombre}</td>
+                <td>{detalle.libro.libro_descripcion}</td>
+                <td>{detalle.prestamo.id}</td>
+                <td>{detalle.prestamo.prestamo_fechaEnt}</td>
+                <td>{detalle.prestamo.prestamo_fechaDev}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+>>>>>>> 4a2444c4fd9461a565a81b53abed0f91d25d4c5b
     );
-}
-
-export default Prestamos;
+  };
+  
+  export default Prestamos;
