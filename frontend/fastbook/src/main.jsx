@@ -13,6 +13,6 @@ import AddBook from './pages/add_book.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <MainBibliotecario />
+    <AddAuthor />
   </React.StrictMode>,
 )
