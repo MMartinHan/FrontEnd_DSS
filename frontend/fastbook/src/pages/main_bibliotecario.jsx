@@ -17,7 +17,7 @@ const MainBibliotecario = () => {
                     </tr>
                 </table>
             </div>
-            <div>
+            <div className="container">
                 <table className="table_thead_th" sx={{width: "100%"}}> 
                     <tr className="table_tbody_tr">
                         <td><img src={agregar} className="image_prestamos" /></td>
@@ -27,7 +27,7 @@ const MainBibliotecario = () => {
                     </tr>
                 </table>
             </div>
-            <div>
+            <div className="container">
                 <table className="table_thead_th" sx={{width: "100%"}}> 
                     <tr className="table_tbody_tr">
                         <td><img src={agregar_autor} className="image_prestamos" /></td>
