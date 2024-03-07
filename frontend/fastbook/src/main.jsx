@@ -16,7 +16,7 @@ import Header from './components/header.jsx'
 
 ReactDOM.render(
   <BrowserRouter> {/* Envuelve tu App con BrowserRouter */}
-    <App />
+    <Estu_prestamos/>
   </BrowserRouter>,
   document.getElementById('root')
 );
