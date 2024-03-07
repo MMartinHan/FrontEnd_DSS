@@ -13,6 +13,7 @@ const Catalogo = () => {
       <h1> Catalogo de Libros </h1>
       <br />
       <SearchComponent /> 
+      {}
     </div>
   );
 };
