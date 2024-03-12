@@ -7,7 +7,7 @@ import UserContext from "../components/context";
 
 const Login = () => {
 
-    const { setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
 
     const URL = 'http://127.0.0.1:8000/login/';
     const [email, setEmail] = useState('');
@@ -21,6 +21,11 @@ const Login = () => {
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
+
+    const handleLogin = (username, password) => {
+        // Llama a la función de inicio de sesión del contexto del usuario
+        setUser({username, password});
+      };
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);

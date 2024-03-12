@@ -1,12 +1,14 @@
 // Estu_prestamos.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import '../css/Estu_prestamos.css'; // Importa tu archivo de estilos
 import Navbar from '../components/Navbar';
 import {createPrestamo} from "../api/prestamos.api"
+import UserContext from "../components/context";
 
 const Estu_prestamos = () => {
   const [detalles, setDetalles] = useState([]);
+  const {user} = useContext(UserContext);
 
   useEffect(() => {
     // Función para obtener detalles de la API

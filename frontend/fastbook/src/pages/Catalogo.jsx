@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from 'react';
 import "../css/Catalogo.css"; // Ajusta la ruta según la ubicación de tu archivo CSS
 import Header from "../components/header";
 import SearchComponent from "../components/SearchComponent";
 import Navbar from "../components/Navbar";
+import UserContext from "../components/context";
 
 const Catalogo = () => {
+  const {user} = useContext(UserContext);
 
   return (
     <div>
