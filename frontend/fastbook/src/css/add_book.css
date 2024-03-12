@@ -61,3 +61,29 @@
 .add-book-container button[type='submit']:hover {
     background-color: #0056b3;
 }
+
+
+.add-book-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.add-book-container th, .add-book-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.add-book-container th {
+    background-color: #007bff;
+    color: white;
+}
+
+.add-book-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.add-book-container tr:hover {
+    background-color: #ddd;
+}
