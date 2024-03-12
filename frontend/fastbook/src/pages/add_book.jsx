@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../css/add_book.css";
 import NavbarUser from "../components/NavBarUser";
+import UserContext from "../components/context";
 
 const URL = 'http://localhost:8000/libros/';
 const AddBook = () => {
     // Suponiendo que tienes un estado de autores disponibles
     const [autoresDisponibles, setAutoresDisponibles] = useState([]);
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         const url_autores = 'http://localhost:8000/autores/';

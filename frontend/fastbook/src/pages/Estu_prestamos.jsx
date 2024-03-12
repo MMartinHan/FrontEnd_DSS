@@ -1,23 +1,27 @@
 // Estu_prestamos.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import '../css/Estu_prestamos.css'; // Importa tu archivo de estilos
-import Navbar from '../components/Navbar';
-import {createPrestamo} from "../api/prestamos.api"
-import {useUser} from "../components/context";
+import Navbar from "../components/Navbar";
+import UserContext from "../components/context";
+
+
 
 const Estu_prestamos = () => {
   const [detalles, setDetalles] = useState([]);
   const {user} = useContext(UserContext);
 
+  const estudianteId = parseInt(user.id, 10);
+
   useEffect(() => {
+    const usuarioId = localStorage.getItem('userId');
     // Función para obtener detalles de la API
     const fetchDetalles = async () => {
       try {
         const response = await axios.get('http://localhost:8000/detalles_/');
 
         // Filtrar detalles
-        const detallesFiltrados = response.data.filter((detalle) => detalle.estudiante.id === user.id);
+        const detallesFiltrados = response.data.filter((detalle) => detalle.estudiante.id === estudianteId);
 
         setDetalles(detallesFiltrados);
       } catch (error) {
