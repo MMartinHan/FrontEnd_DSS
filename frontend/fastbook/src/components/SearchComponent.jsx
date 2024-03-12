@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import '../css/SearchComponent.css'; // Importa tu archivo de estilos
-import {createPrestamo} from "../api/prestamos.api"
-import {createDetalle} from "../api/detallePrestamos.api"
-
+import '../css/SearchComponent.css';
+import { createPrestamo } from '../api/prestamos.api';
+import { createDetalle } from '../api/detallePrestamos.api';
+import { crearPrestamo } from '../api/prestamos.api';
+import { crearDetalle } from '../api/detallePrestamos.api';
 
 const SearchComponent = () => {
   const [books, setBooks] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
-  // Función para traer los datos de la API
+
   const URL = 'http://localhost:8000/libros_/';
-  const URL_base = 'http://localhost:8000/libros/';
 
   const showData = async () => {
     const response = await fetch(URL);
@@ -19,47 +19,64 @@ const SearchComponent = () => {
   };
 
   const estudianteId = 1;
-  const fechaEntrega = '2024-03-07'; 
-  const fechaDevolucion = '2024-03-14'; 
 
-  // Construir el objeto Prestamo
-  const prestamoData = {
-    estudiante: estudianteId,
-    prestamo_fechaEnt: fechaEntrega,
-    prestamo_fechaDev: fechaDevolucion,
-  };
-
-  // Función para reservar un libro
-  //createPrestamo(prestamoData);
-
-  /*const showData2 = async () => {
-    const response = await fetch(URL_base);
-    const data_ = await response.json();
-    setBooks(data_);
-  };
-
-  const handleStockChange = (e) => {
-    setStock(e.target.value);
-};*/
-
-
-  // Función de búsqueda
   const searcher = (e) => {
     setSearch(e.target.value);
   };
 
-  // Método de filtrado
-  const results = !search ? books : books.filter((dato) => dato.libro_nombre.toLowerCase().includes(search.toLowerCase()));
+  const reserveBook = async (book) => {
+    const fechaEntrega = new Date().toISOString().split('T')[0];
+    const fechaDevolucion = new Date(
+      new Date().getTime() + 10 * 24 * 60 * 60 * 1000
+    ).toISOString().split('T')[0];
+
+    // Crear Prestamo
+    const prestamoData = {
+      estudiante: estudianteId,
+      prestamo_fechaEnt: fechaEntrega,
+      prestamo_fechaDev: fechaDevolucion,
+    };
+
+    const prestamoResponse = await crearPrestamo(prestamoData);
+
+    if (prestamoResponse.id) {
+      // Crear DetallePrestamo utilizando el ID del Prestamo recién creado
+      const detalleData = {
+        libro: book.id,
+        autor: book.autor_id.id,
+        estudiante: estudianteId,
+        prestamo: prestamoResponse.id,
+      };
+
+      await crearDetalle(detalleData);
+
+      // Actualizar la lista de libros después de reservar
+      showData();
+    } else {
+      console.error('Error al crear el Prestamo');
+    }
+  };
+
+  const results = !search
+    ? books
+    : books.filter((dato) =>
+        dato.libro_nombre.toLowerCase().includes(search.toLowerCase())
+      );
 
   useEffect(() => {
     showData();
   }, []);
 
-  // Renderizamos la vista
   return (
     <div className="search-container">
-      <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
-      <table className='books-table'>
+      <input
+        value={search}
+        onChange={searcher}
+        type="text"
+        placeholder="Search"
+        className="form-control"
+      />
+      <table className="books-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -77,9 +94,7 @@ const SearchComponent = () => {
               <td>{book.autor_id.autor_nombre}</td>
               <td>{book.libro_stock}</td>
               <td>
-                <button onClick={() => createPrestamo(prestamoData)}>
-                  Reservar
-                </button>
+                <button onClick={() => reserveBook(book)}>Reservar</button>
               </td>
             </tr>
           ))}
@@ -87,10 +102,6 @@ const SearchComponent = () => {
       </table>
     </div>
   );
-};
-
-const reservarLibro = (libroId) => {
-  console.log(`Reservar libro con ID: ${libroId}`);
 };
 
 export default SearchComponent;
