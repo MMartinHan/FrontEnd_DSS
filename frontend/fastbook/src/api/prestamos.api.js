@@ -1,5 +1,4 @@
 import axios from "axios";
-import UserContext from "../components/context"
 
 const prestamosApi = axios.create({   
     baseURL: "http://localhost:8000/prestamos/",

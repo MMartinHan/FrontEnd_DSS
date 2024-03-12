@@ -4,9 +4,11 @@ import axios from 'axios';
 import '../css/Estu_prestamos.css'; // Importa tu archivo de estilos
 import Navbar from '../components/Navbar';
 import {createPrestamo} from "../api/prestamos.api"
+import {useUser} from "../components/context";
 
 const Estu_prestamos = () => {
   const [detalles, setDetalles] = useState([]);
+  const {user} = useContext(UserContext);
 
   useEffect(() => {
     // Función para obtener detalles de la API
@@ -15,7 +17,7 @@ const Estu_prestamos = () => {
         const response = await axios.get('http://localhost:8000/detalles_/');
 
         // Filtrar detalles
-        const detallesFiltrados = response.data.filter((detalle) => detalle.estudiante.id === 1);
+        const detallesFiltrados = response.data.filter((detalle) => detalle.estudiante.id === user.id);
 
         setDetalles(detallesFiltrados);
       } catch (error) {
