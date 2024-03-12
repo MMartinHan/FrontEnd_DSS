@@ -4,33 +4,30 @@ import NavbarUser from "../components/NavBarUser";
 import axios from "axios";
 
 const Prestamos = () => {
-    const [detalles, setDetalles] = useState([]);
-    const [prestamos, setPrestamos] = useState([]); 
-  
-    useEffect(() => {
-      // Función para obtener detalles de la API
-      const fetchDetalles = async () => {
-        try {
-          const response = await axios.get('http://localhost:8000/detalles_/');
-  
-          // Filtrar detalles
-          const detallesFiltrados = response.data.filter((detalle) => detalle.estudiante.id === 1);
-  
-          setDetalles(detallesFiltrados);
-        } catch (error) {
-          console.error('Error al obtener detalles:', error);
-        }
-      };
-  
-      // Llamada a la función para cargar detalles al montar el componente
-      fetchDetalles();
-    }, []);
-  
-    return (
+  const [detalles, setDetalles] = useState([]);
+
+  useEffect(() => {
+    // Función para obtener detalles de la API
+    const fetchDetalles = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/detalles_/');
+
+        // Setear todos los detalles directamente
+        setDetalles(response.data);
+      } catch (error) {
+        console.error('Error al obtener detalles:', error);
+      }
+    };
+
+    // Llamada a la función para cargar detalles al montar el componente
+    fetchDetalles();
+  }, []);
+
+  return (
+    <div>
       <div>
-        <div>
-            <NavbarUser />
-        </div>
+        <NavbarUser />
+      </div>
       <div className="prestamos-container">
         <br />
         <h1>Detalles de Prestamos</h1>
@@ -61,8 +58,8 @@ const Prestamos = () => {
           </tbody>
         </table>
       </div>
-      </div>
-    );
-  };
-  
-  export default Prestamos;
+    </div>
+  );
+};
+
+export default Prestamos;

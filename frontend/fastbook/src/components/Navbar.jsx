@@ -7,6 +7,8 @@ import UserContext from "./context";
 function Navbar() {
 	const {user} = useContext(UserContext);
 	console.log('Usuario:', user);
+	console.log('Nombre:', user.name);
+	console.log('ID:', user.id);
 	const navRef = useRef();
 
 	const showNavbar = () => {
@@ -22,7 +24,7 @@ function Navbar() {
 				<a href="/catalogo">Catalogo</a>
 				<a href="/mis_prestamos">Mis Prestamos</a>
 				<a href="/">Cerrar Cesion</a>
-				<div>{user ? `Bienvenido, ${user}` : 'No has iniciado sesión'}</div>
+				<div>{user ? `Bienvenido, ${user.name}` : 'No has iniciado sesión'}</div>
 				<button
 					className="nav-btn nav-close-btn"
 					onClick={showNavbar}>

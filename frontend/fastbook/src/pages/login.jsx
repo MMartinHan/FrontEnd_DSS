@@ -53,7 +53,7 @@ const Login = () => {
             console.log('Email:', data.email);
             console.log('Nombre:', data.name);
             setRole(data.role); // Guarda el rol en el estado
-            setUser(data.name); // Guarda el usuario en el estado
+            setUser(data); // Guarda el usuario en el estado
             if (data.role === 'estudiante') {
                 navigate('/catalogo');
                 console.log('Estudiante');

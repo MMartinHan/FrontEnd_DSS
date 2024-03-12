@@ -24,7 +24,7 @@ function NavbarUser() {
 				<a href="/add_book">Agregar Libro</a>
                 <a href="/prestamos">Prestamo</a>
 				<a href="/">Cerrar Cesion</a>
-				<div>{user ? `Bienvenido, ${user}` : 'No has iniciado sesión'}</div>
+				<div>{user ? `Bienvenido, ${user.name}` : 'No has iniciado sesión'}</div>
 				<button
 					className="nav-btn nav-close-btn"
 					onClick={showNavbarUser}>

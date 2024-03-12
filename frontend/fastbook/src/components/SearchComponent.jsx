@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../css/SearchComponent.css';
 import { createPrestamo } from '../api/prestamos.api';
 import { createDetalle } from '../api/detallePrestamos.api';
 import { crearPrestamo } from '../api/prestamos.api';
 import { crearDetalle } from '../api/detallePrestamos.api';
+import UserContext from "./context";
 
 const SearchComponent = () => {
+  const {user} = useContext(UserContext);
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState('');
 
@@ -18,7 +20,11 @@ const SearchComponent = () => {
     setBooks(data);
   };
 
-  const estudianteId = 1;
+  const estudianteId = parseInt(user.id, 10);
+
+// 10 es la base numérica, que se utiliza comúnmente y significa base decimal. Puedes ajustarla según tus necesidades.
+
+  const estuId = 2;
 
   const searcher = (e) => {
     setSearch(e.target.value);
@@ -37,6 +43,7 @@ const SearchComponent = () => {
       prestamo_fechaDev: fechaDevolucion,
     };
 
+    console.log(prestamoData);
     const prestamoResponse = await crearPrestamo(prestamoData);
 
     if (prestamoResponse.id) {

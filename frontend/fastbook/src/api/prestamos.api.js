@@ -1,4 +1,5 @@
 import axios from "axios";
+import UserContext from "../components/context"
 
 const prestamosApi = axios.create({   
     baseURL: "http://localhost:8000/prestamos/",
@@ -20,7 +21,6 @@ export const deletePrestamo = (id) => prestamosApi.delete(`/${id}`);
 
 // api/prestamos.api.js
 export const crearPrestamo = async (prestamoData) => {
-    try {
       const response = await fetch('http://localhost:8000/prestamos/', {
         method: 'POST',
         headers: {
@@ -29,17 +29,16 @@ export const crearPrestamo = async (prestamoData) => {
         },
         body: JSON.stringify(prestamoData),
         credentials: 'include',
-      });
-  
-      if (!response.ok) {
-        throw new Error('Error al crear el Prestamo');
-      }
-  
-      return await response.json();
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
+      })
+      return response.json()
+        .then(data => {
+            console.log('Prestamo:', data);
+            return data;
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
   };
   
   
