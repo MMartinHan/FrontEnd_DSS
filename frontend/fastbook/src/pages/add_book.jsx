@@ -1,10 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/add_book.css";
 import NavbarUser from "../components/NavBarUser";
 
+const URL = 'http://localhost:8000/libros/';
 const AddBook = () => {
     // Suponiendo que tienes un estado de autores disponibles
-    const [autoresDisponibles] = useState(["1", "2", "3"]);
+    const [autoresDisponibles, setAutoresDisponibles] = useState([]);
+
+    useEffect(() => {
+        const url_autores = 'http://localhost:8000/autores/';
+        fetch(url_autores,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Autores:', data);
+            setAutoresDisponibles(data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }, []);
 
     // Estados para los campos del libro
     const [nombreLibro, setNombreLibro] = useState('');
@@ -12,6 +31,25 @@ const AddBook = () => {
     const [fechaPublicacion, setFechaPublicacion] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [stock, setStock] = useState(0);
+    const [librosDisponibles, setLibrosDisponibles] = useState([]);
+
+    useEffect(() => {
+        fetch(URL, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Libros:', data);
+            setLibrosDisponibles(data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }, []);
+
 
     // Manejadores de cambios en los campos
     const handleNombreLibroChange = (e) => {
@@ -35,7 +73,7 @@ const AddBook = () => {
     };
 
     // Manejador de envío del formulario
-    const URL = 'http://localhost:8000/libros/';
+    
     const Username = 'mateo';
     const Password = 'mateo123';
     const handleSubmit = (e) => {
@@ -58,6 +96,7 @@ const AddBook = () => {
         .then(response => response.json())
         .then(data => {
             console.log('Libro agregado:', data);
+            setLibrosDisponibles([...librosDisponibles, data]);
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -89,13 +128,37 @@ const AddBook = () => {
                     <label htmlFor="autor">Autor:</label>
                     <select id="autor" value={autorSeleccionado} onChange={handleAutorChange}>
                         <option value="">Selecciona un autor</option>
-                        {autoresDisponibles.map((autor, index) => (
-                            <option key={index} value={autor}>{autor}</option>
+                        {autoresDisponibles.map((autor) => (
+                            <option key={autor.id} value={autor.id}>{autor.autor_nombre}</option>
                         ))}
                     </select>
                 </div>
                 <button type="submit">Agregar</button>
             </form>
+
+            <h2>Libros disponibles</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Fecha de publicación</th>
+                        <th>Descripción</th>
+                        <th>Stock</th>
+                        <th>Autor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {librosDisponibles.map((libro) => (
+                        <tr key={libro.id}>
+                            <td>{libro.libro_nombre}</td>
+                            <td>{libro.libro_fechaPub}</td>
+                            <td>{libro.libro_descripcion}</td>
+                            <td>{libro.libro_stock}</td>
+                            <td>{libro.autor_id}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }

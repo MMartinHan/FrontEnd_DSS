@@ -1,9 +1,12 @@
 
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../css/Navbar.css";
+import UserContext from "./context";
 
 function NavbarUser() {
+	const {user} = useContext(UserContext);
+	console.log('Usuario:', user);
 	const navRef = useRef();
 
 	const showNavbarUser = () => {
@@ -21,6 +24,7 @@ function NavbarUser() {
 				<a href="/add_book">Agregar Libro</a>
                 <a href="/prestamos">Prestamo</a>
 				<a href="/">Cerrar Cesion</a>
+				<div>{user ? `Bienvenido, ${user}` : 'No has iniciado sesión'}</div>
 				<button
 					className="nav-btn nav-close-btn"
 					onClick={showNavbarUser}>
