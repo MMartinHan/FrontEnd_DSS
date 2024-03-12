@@ -1,32 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 import "../css/login.css";
 import Logo from "../assets/logo1.jpeg";
 import Header from "../components/header";
 
 const Login = () => {
 
-    const URL = 'http://localhost:8000/admin/login/userdb/';
+    const URL = 'http://127.0.0.1:8000/login/';
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [role, setRole] = useState('');
     const Username = 'mateo';
     const Password = 'mateo123';
+    const navigate = useNavigate();
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
 
     const handleData = async () => {
-        try {
-            const response = await fetch(URL);
-            const data = await response.json();
-            console.log(data);
-            // Manejar la respuesta del servidor según el resultado de la autenticación
-        } catch (error) {
-            console.error('Error:', error);
+        const data = {
+            email: email,
+            password: password
         }
+        fetch(URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + btoa(Username + ':' + Password)
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else if (response.status === 400) {
+                setErrorMessage('Email or password incorrect');
+                throw new Error('Bad response from server');
+            }
+        })
+        .then(data => {
+            console.log('Usuario:', data);
+            console.log('Role:', data.role);
+            setRole(data.role); // Guarda el rol en el estado
+            if (data.role === 'estudiante') {
+                navigate('/prestamos');
+            } else if (data.role === 'bibliotecario') {
+                navigate('/main_bibliotecario');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     };
 
     const handleLoginClick = () => {
         // Llamar a la función handleData para realizar la comparación
+        setErrorMessage('');
         handleData();
     };
-
 
     return(
     <div>   
@@ -37,10 +74,13 @@ const Login = () => {
             <div className="login">
                 <h1 className="login__title">Sign In</h1>
                 <div className="login__group">
-                    <input type="email" id="email" required className="login__group__input" placeholder="Email"/>
+                    <input type="email" id="email" required className="login__group__input" placeholder="Email" value={email} onChange={handleEmailChange}/>
                 </div>
                 <div className="login__group">
-                    <input type="password" id="password" required className="login__group__input" placeholder="Password" />
+                    <input type="password" id="password" required className="login__group__input" placeholder="Password" value={password} onChange={handlePasswordChange}/>
+                </div>
+                <div className="login__group">
+                    <p className="login__title">{errorMessage}</p>
                 </div>
                 <button className="login__sign-in" onClick={handleLoginClick}>Sign In</button>
             </div>
